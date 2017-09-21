@@ -212,7 +212,28 @@ class Card(object):
             return comp_val
         else :
             return self.compare_color(card)
-        
+
+    def __repr__(self) :
+        return 'Card("'+ self.get_value() +'", "'+ self.get_color() +'")'
+
+    def __eq__(self,other):
+        return self.compare(other) == 0
+
+    def __nq__(self,other):
+        return self.compare(other) != 0
+
+    def __ge__(self,other):
+        return self.compare(other) >= 0
+
+    def __gt__(self,other):
+        return self.compare(other) > 0
+
+    def __le__(self,other):
+        return self.compare(other) <= 0
+
+    def __lt__(self,other):
+        return self.compare(other) < 0
+    
 if __name__ == '__main__':
     import doctest
     doctest.testmod()
