@@ -65,8 +65,8 @@ class Card(object):
         :param color: color of the card
         :type color: element of `Card.COLORS`
         """
-        self.__value = VALUES
-        self.__color = COLORS
+        self.__value = value
+        self.__color = color
     
     def random():
         """
@@ -80,8 +80,8 @@ class Card(object):
         >>> c.get_color() in Card.COLORS
         True
         """
-        Val = random.choice(VALUES)
-        Col = random.choice(COLORS)
+        Val = random.choice(Card.VALUES)
+        Col = random.choice(Card.COLORS)
         return Card(Val,Col)
 
     def get_color(self):
@@ -97,7 +97,7 @@ class Card(object):
         >>> c.get_color()
         'heart'
         """
-        return self.color
+        return self.__color
 
     def get_value(self):
         """
@@ -114,7 +114,7 @@ class Card(object):
         >>> c.get_value()
         'Ace'
         """
-        return self.value
+        return self.__value
 
     
     def compare_value(self, card):
@@ -142,8 +142,8 @@ class Card(object):
          True
          """
          val1 = self.get_value()
-         val2 = C2.get_value()
-         comp = card.values.index(val1) - card.values.index(val2)
+         val2 = card.get_value()
+         comp = Card.VALUES.index(val1) - Card.VALUES.index(val2)
          return comp
         
     def compare_color(self, card):
@@ -171,8 +171,8 @@ class Card(object):
         True
         """
         col1 = self.get_color()
-        col2 = C2.get_color()
-        comp = card.COLORS.index(col1) - card.COLORS.index(col2)
+        col2 = card.get_color()
+        comp = Card.COLORS.index(col1) - Card.COLORS.index(col2)
         return comp
 
     def compare(self, card):
@@ -207,9 +207,12 @@ class Card(object):
         >>> c1bis.compare(c1bis) == 0
         True
         """
-        pass
-    
-
+        comp_val = self.compare_value(card)
+        if comp_val != 0 :
+            return comp_val
+        else :
+            return self.compare_color(card)
+        
 if __name__ == '__main__':
     import doctest
     doctest.testmod()

@@ -55,9 +55,9 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = "Module Complex"
-copyright = "2017, , Univ. Lille1"
-author = ""
+project = "Module Card"
+copyright = "2017, Baux, Univ. Lille1"
+author = "Baux"
 
 
 
